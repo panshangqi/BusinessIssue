@@ -9,7 +9,7 @@ from tornado.web import RequestHandler
 class BaseHandler(RequestHandler):
     def get(self):
         logging.info('show me the data')
-        self.write()
+        self.write('')
 
 
 class DownloadHandler(RequestHandler):
