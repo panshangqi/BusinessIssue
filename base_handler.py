@@ -4,15 +4,21 @@
 
 import logging
 from tornado.web import RequestHandler
+from tsp import tsp_dp
 
 
 class BaseHandler(RequestHandler):
     def get(self):
         logging.info('show me the data')
-        self.write('')
+        self.render('')
 
 
-class DownloadHandler(RequestHandler):
+class CalculateHandler(RequestHandler):
     def post(self):
-        pass
-
+        points = self.get_argument('points')
+        d = self.get_argument('d')
+        unit = self.get_argument('unit')
+        shortest_distance, route = tsp_dp(points, d)
+        shortest_distance = str(shortest_distance) + ' ' + unit
+        data = dict(shortest_distance=shortest_distance, route=route)
+        self.write(data)
