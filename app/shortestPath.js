@@ -117,19 +117,20 @@ $(function() {
                 },
                 exporting: {
                     enabled: true,
-                    url: '//export.highcharts.com.cn'
+                    // url: 'https://img.hcharts.cn/export.highcharts.com.cn'
                 },
                 plotOptions: {
                     series: {
                         dataLabels: {
                             align: 'right',
-                            // format:'{point.index}',
-                            color: 'red',
-                            fill:'rgb(255, 0, 0)',
-                            stroke: 'rgb(255, 0, 0)',
-                            borderColor:'red',
                             enabled: listEnabled,
                             y: -5,
+                            style:{
+                                color: 'red',
+                                fontSize: '14px',
+                                fill:'rgb(255, 0, 0)',
+                                stroke: 'rgb(255, 0, 0)',
+                            },
                             formatter: function(){
                                 return this.point.index+1;
                             }
@@ -188,12 +189,6 @@ $(function() {
             $(".short-path").html('');
 
         });
-        // $(".x-axis,.y-axis").keyup(function(){
-        //     var _this = $(this);
-        //     var patt = /[^d]/g;
-        //     // _this.val()
-        //
-        // });
         // activate the button
         $('#reset').click(function () {
             var chart = $('#container').highcharts();
@@ -217,8 +212,11 @@ $(function() {
                 d:unitVal,
                 points:newArr
             }
-
-            var pathTitle = '最短路径为24cm'
+            iniChart(currentHeigh,currentWidth,currentX,currentY,1,newArr,false,pathTitle,true);
+            $(".short-path").html('23cm');
+            fillListHtml(newArr);
+            $(this).addClass("done");
+            var pathTitle = '最短路径为24cm';
             if(dotArr.length){
                 if(dotArr.length<3){
                     alert('请选中三个点以上');
@@ -228,12 +226,17 @@ $(function() {
                         url: "http://127.0.0.1:9000/business_issues",
                         data: obj,
                         dataType:'json',
-                        success: function(ss){
-                            var a =ss;
-                            iniChart(currentHeigh,currentWidth,currentX,currentY,1,newArr,false,pathTitle,true);
-                            $(".short-path").html('23cm');
-                            fillListHtml(newArr);
-                            $(this).addClass("done");
+                        success: function(data){
+                            if(data){
+                                var distance = data.shortest_distance;
+                                var newArr = data.acquire_route;
+                                var pathTitle = '最短路径为'+distance;
+                                iniChart(currentHeigh,currentWidth,currentX,currentY,1,newArr,false,pathTitle,true);
+                                $(".short-path").html(distance);
+                                fillListHtml(newArr);
+                                $(this).addClass("done");
+                            }
+
                         }});
 
 
