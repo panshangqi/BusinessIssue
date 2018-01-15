@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 # @Time  :  2018/1/11 上午11:33
 
-from tornado import template, web
+import threading
 import jinja2
+from tornado import template
 
 
 class TTemplate(object):
@@ -18,6 +19,7 @@ class JinjaLoader(template.BaseLoader):
     def __init__(self, root_directory, **kwargs):
         self.jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(root_directory), **kwargs)
         self.templates = {}
+        self.lock = threading.RLock()
 
     def resolve_path(self, name, parent_path=None):
         return name

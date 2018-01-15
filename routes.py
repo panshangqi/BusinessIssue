@@ -7,5 +7,6 @@ def get():
     routes = [
         (r'/business_issues', 'base_handler.BaseHandler'),
         (r'/acquire_route', 'base_handler.CalculateHandler'),
+        (r'/download_picture', 'base_handler.DownloadRoutePictureHandler')
     ]
     return routes

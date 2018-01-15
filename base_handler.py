@@ -22,3 +22,19 @@ class CalculateHandler(RequestHandler):
         shortest_distance = str(shortest_distance) + ' ' + unit
         data = dict(shortest_distance=shortest_distance, route=route)
         self.write(data)
+        self.finish()
+
+
+class DownloadRoutePictureHandler(RequestHandler):
+    def get(self):
+        filename = self.get_argument('filename', '')
+        logging.info('i download file handler: {}'.format(filename))
+        self.set_header('Content-Type', 'application/octet-stream')
+        self.set_header('Content-Disposition', 'attachment; filename='+filename)
+        with open(filename, 'r') as f:
+            while True:
+                data = f.read(1000)
+                if not data:
+                    break
+                self.write(data)
+        self.finish()
