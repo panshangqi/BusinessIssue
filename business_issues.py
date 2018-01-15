@@ -73,7 +73,7 @@ class BusinessIssues(Application):
 
 
 def main(args):
-    template_loader = JinjaLoader(os.path.join(os.path.dirname(__file__), 'templates/'))
+    template_loader = JinjaLoader(os.path.join(os.path.dirname(__file__), 'app/'))
     application = BusinessIssues(get(), template_loader=template_loader, xsrf_cookies=False, debug=args.debug)
     server = HTTPServer(application, xheaders=True)
     server.listen(args.port)
