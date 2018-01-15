@@ -9,8 +9,7 @@ from tsp import tsp_dp
 
 class BaseHandler(RequestHandler):
     def get(self):
-        logging.info('show me the data')
-        self.render('')
+        self.render('shortestPath.html')
 
 
 class CalculateHandler(RequestHandler):
