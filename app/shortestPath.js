@@ -41,7 +41,6 @@ $(function() {
                                                 if(!isExit)  $(".list-area ul").append(html);
 
                                             }
-                                            console.log("x和y值分别为：" + _x + " y: " + _y);
                                         }else{
                                             alert('最多选中20个点');
                                         }
@@ -218,14 +217,25 @@ $(function() {
                 d:unitVal,
                 points:newArr
             }
+
             var pathTitle = '最短路径为24cm'
             if(dotArr.length){
                 if(dotArr.length<3){
                     alert('请选中三个点以上');
                 }else{
-                    iniChart(currentHeigh,currentWidth,currentX,currentY,1,newArr,false,pathTitle,true);
-                    $(".short-path").html('23cm');
-                    fillListHtml(newArr);
+                    $.ajax({
+                        type:'POST',
+                        url: "http://127.0.0.1:9000/business_issues",
+                        data: obj,
+                        dataType:'json',
+                        success: function(ss){
+                            var a =ss;
+                            iniChart(currentHeigh,currentWidth,currentX,currentY,1,newArr,false,pathTitle,true);
+                            $(".short-path").html('23cm');
+                            fillListHtml(newArr);
+                            $(this).addClass("done");
+                        }});
+
 
                 }
             }else{
