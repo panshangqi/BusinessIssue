@@ -207,10 +207,11 @@ $(function() {
                 unit = $("select").val(),
                 unitVal = Number($(".unit-val").val());
             var newArr = dealArr(dotArr);
+            var arrJson = JSON.stringify(newArr);
             var obj = {
                 unit:unit,
                 d:unitVal,
-                points:newArr
+                points:arrJson
             }
             iniChart(currentHeigh,currentWidth,currentX,currentY,1,newArr,false,pathTitle,true);
             $(".short-path").html('23cm');
@@ -223,13 +224,13 @@ $(function() {
                 }else{
                     $.ajax({
                         type:'POST',
-                        url: "http://127.0.0.1:9000/business_issues",
+                        url: "acquire_route",
                         data: obj,
                         dataType:'json',
                         success: function(data){
                             if(data){
                                 var distance = data.shortest_distance;
-                                var newArr = data.acquire_route;
+                                var newArr = data.route;
                                 var pathTitle = '最短路径为'+distance;
                                 iniChart(currentHeigh,currentWidth,currentX,currentY,1,newArr,false,pathTitle,true);
                                 $(".short-path").html(distance);
