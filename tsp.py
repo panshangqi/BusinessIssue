@@ -4,6 +4,8 @@
 # @Author : Sui Chen
 import math
 
+import logging
+
 
 def distance(point, other):
     return math.sqrt((point[0] - other[0]) ** 2 + (point[1] - other[1]) ** 2)
@@ -81,7 +83,6 @@ def tsp_greedy(points, d):
     return minimum * d, map(lambda x: points[x], res_route)
 
 points = ((0,0),(0,1),(1,0),(1,1), (2,1), (2,0))
-print tsp_greedy(points, 1)
 
 
 
