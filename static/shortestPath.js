@@ -95,7 +95,7 @@ $(function() {
                 },
                 yAxis: {
                     title: {
-                        text: '数值'
+                        text: ''
                     },
                     labels: {
                         step: 1
@@ -170,6 +170,8 @@ $(function() {
                 yVal = Number($(".y-axis").val());
                 currentX = xVal,
                 currentY = yVal;
+            currentWidth = 600;
+            currentHeigh = 600;
             if(xVal == yVal ){
                 iniChart(600,600,xVal,yVal,0,[],true,'',false);
             }else if(xVal>yVal){
