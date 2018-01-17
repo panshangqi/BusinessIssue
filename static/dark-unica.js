@@ -37,9 +37,9 @@
         },
         plotOptions:{
             series:{
-                color: 'red',
+                color: '#FF0000',
                 lineColor:'#fff600',
-                dataLabels:{color:"#B0B0B3"},
+                // dataLabels:{color:"#B3B3B3"},
                 marker:{lineColor:"#333"}
                 },
             boxplot:{fillColor:"#505053"},
@@ -111,7 +111,7 @@
         },
         legendBackgroundColor:"rgba(0, 0, 0, 0.5)",
         background2:"#505053",
-        dataLabelsColor:"#B0B0B3",
+        dataLabelsColor:"#FF0000",
         textColor:"#C0C0C0",
         contrastTextColor:"#F0F0F3",
         maskColor:"rgba(255,255,255,0.3)"

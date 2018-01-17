@@ -125,9 +125,11 @@ $(function() {
                             align: 'right',
                             enabled: listEnabled,
                             y: -5,
+                            color:'#FF0000',
                             style:{
                                 color: 'red',
                                 fontSize: '14px',
+                                fontWeight:'400',
                                 fill:'rgb(255, 0, 0)',
                                 stroke: 'rgb(255, 0, 0)',
                             },
