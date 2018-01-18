@@ -10,7 +10,9 @@ from tsp import tsp_dp
 class BaseHandler(RequestHandler):
     def get(self):
         self.render('shortestPath.html')
-
+class DrawPointsHandler(RequestHandler):
+    def get(self):
+        self.render('drawPoints.html')
 
 class CalculateHandler(RequestHandler):
     def post(self):
