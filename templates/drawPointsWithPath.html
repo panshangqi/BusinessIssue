@@ -25,7 +25,6 @@
         </div>
     </div>
     <div class="canvas_background" id="canvas_background" ondragstart="return false" oncontextmenu="doNothing()">
-        <div class="short_value" id="short_value"></div>
         <div id="temp_line" class="temp_line"></div>
     </div>
     <div class="log" id="log">
@@ -35,9 +34,7 @@
 </div>
 <div class="footer_box">
     <button id="reset_btn">重置</button>
-    <button id="back_edit_btn" style="width:130px;">继续编辑</button>
-    <button id="excute_btn" style="width:130px;">连线为禁路</button>
-    <button id="excute_path_btn" style="width:130px;">连线为通路</button>
+    <button id="excute_btn">计算</button>
     <button id="export_btn">导出</button>
 </div>
 <div class="export_image_ex" id="export_image_ex">
@@ -51,5 +48,5 @@
 <script src="../static/jquery-1.8.3.min.js"></script>
 <script src="../static/ui_frame.js"></script>
 <script src="../static/html2canvas.min.js"></script>
-<script src="../static/drawPoint.js"></script>
+<script src="../static/drawPointWithPath.js"></script>
 </html>
